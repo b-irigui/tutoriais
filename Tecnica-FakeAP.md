@@ -64,6 +64,19 @@ Agora apenas precisamos iniciar o nosso hostapd e o dnsmasqd
 systemctl start hostapd
 systemctl start dnsmasq
 ```
+
+verifique o status da placa, precisa estar no modo AP
+```
+iw dev wlx242fd0669b57 info
+```
+Caso nao esteja basta parar a interface, setar o modo e subir novamente
+```
+sudo ip link set wlx242fd0669b57 down
+sudo iw dev wlx242fd0669b57 set type ap
+sudo ip link set wlx242fd0669b57 up
+```
+
+
 Uma vez iniciado os serviços, o AP deve estar on e com acesso a internet.<br><br>
 A rede não póssui criptografia, então basta subir uma placa de rede em modo monitoramento para analizar o trafego de rede gerado pelos clientes com wireshark
 <br><br>
